@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Expense Tracker</title>
+    <script src="https://accounts.google.com/gsi/client" async></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .login-container {
+        background: white;
+        border-radius: 12px;
+        padding: 2.5rem;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        width: 90%;
+        max-width: 420px;
+      }
+
+      h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      label {
+        display: block;
+        color: #555;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+      }
+
+      input {
+        width: 100%;
+        padding: 0.875rem;
+        border: 2px solid #e2e8f0;
+        border-radius: 6px;
+        font-size: 1rem;
+        transition: border-color 0.3s;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: #667eea;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 1rem;
+        background: #667eea;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .btn:hover {
+        background: #5568d3;
+      }
+
+      .btn:disabled {
+        background: #cbd5e0;
+        cursor: not-allowed;
+      }
+
+      .divider {
+        text-align: center;
+        margin: 1.5rem 0;
+        color: #999;
+        position: relative;
+      }
+
+      .divider::before,
+      .divider::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 45%;
+        height: 1px;
+        background: #e2e8f0;
+      }
+
+      .divider::before {
+        left: 0;
+      }
+
+      .divider::after {
+        right: 0;
+      }
+
+      .google-btn-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .register-link {
+        text-align: center;
+        margin-top: 1.5rem;
+        color: #666;
+      }
+
+      .register-link a {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .register-link a:hover {
+        text-decoration: underline;
+      }
+
+      .error-message {
+        background: #fed7d7;
+        color: #c53030;
+        padding: 0.75rem;
+        border-radius: 6px;
+        margin-bottom: 1rem;
+        display: none;
+        text-align: center;
+      }
+
+      .back-link {
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+
+      .back-link a {
+        color: #667eea;
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="g_id_onload"
+      data-client_id="604918999613-49liq0skpe6385lf79k887j1ichjg652.apps.googleusercontent.com"
+      data-callback="handleCredentialResponse"
+      data-auto_prompt="false"
+    ></div>
+
+    <!-- <div class="g_id_signin" data-type="standard"></div> -->
+
+    <script>
+      async function handleCredentialResponse(response) {
+        const tokenId = response.credential;
+
+        const res = await fetch("http://localhost:5000/api/auth/google", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ tokenId }),
+        });
+
+        const data = await res.json();
+        if (res.ok) {
+          localStorage.setItem("token", data.token);
+          window.location.href = "dashboard.html"; // ✅ redirect to your page
+        } else {
+          alert(data.error || "Google login failed");
+        }
+      }
+    </script>
+
+    <div class="login-container">
+      <div class="back-link">
+        <a href="index.html">← Back to Home</a>
+      </div>
+
+      <h2>Login</h2>
+
+      <div class="error-message" id="errorMessage"></div>
+
+      <div class="google-btn-container">
+        <div
+          id="g_id_onload"
+          data-client_id="YOUR_GOOGLE_CLIENT_ID"
+          data-callback="handleGoogleLogin"
+          data-auto_prompt="false"
+        ></div>
+        <div
+          class="g_id_signin"
+          data-type="standard"
+          data-size="large"
+          data-theme="outline"
+          data-text="signin_with"
+          data-shape="rectangular"
+          data-logo_alignment="left"
+        ></div>
+      </div>
+
+      <div class="divider">OR</div>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            required
+            placeholder="Enter your email"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            required
+            placeholder="Enter your password"
+          />
+        </div>
+
+        <button type="submit" class="btn" id="loginBtn">Login</button>
+      </form>
+
+      <div class="register-link">
+        Don't have an account? <a href="register.html">Register here</a>
+      </div>
+    </div>
+
+    <script>
+      const API_URL = "http://localhost:5000/api";
+
+      // Traditional Login
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+          const loginBtn = document.getElementById("loginBtn");
+          const errorMessage = document.getElementById("errorMessage");
+
+          loginBtn.disabled = true;
+          loginBtn.textContent = "Logging in...";
+          errorMessage.style.display = "none";
+
+          try {
+            const response = await fetch(`${API_URL}/auth/login`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ email, password }),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+              throw new Error(data.msg || "Login failed");
+            }
+
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("user", JSON.stringify(data.user));
+            window.location.href = "dashboard.html";
+          } catch (err) {
+            errorMessage.textContent = err.message;
+            errorMessage.style.display = "block";
+            loginBtn.disabled = false;
+            loginBtn.textContent = "Login";
+          }
+        });
+
+      // Google OAuth Login
+      async function handleGoogleLogin(response) {
+        const errorMessage = document.getElementById("errorMessage");
+        errorMessage.style.display = "none";
+
+        try {
+          const res = await fetch(`${API_URL}/auth/google`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ tokenId: response.credential }),
+          });
+
+          const data = await res.json();
+
+          if (!res.ok) {
+            throw new Error(data.msg || "Google login failed");
+          }
+
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("user", JSON.stringify(data.user));
+          window.location.href = "dashboard.html";
+        } catch (err) {
+          errorMessage.textContent = err.message;
+          errorMessage.style.display = "block";
+        }
+      }
+
+      // Redirect if already logged in
+      if (localStorage.getItem("token")) {
+        window.location.href = "dashboard.html";
+      }
+    </script>
+  </body>
+</html>
