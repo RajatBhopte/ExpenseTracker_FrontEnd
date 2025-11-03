@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://expensetracker-backend-8uen.onrender.com/api";
 let currentExpenseId = null;
 
 // Check authentication
