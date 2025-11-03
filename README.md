@@ -21,23 +21,7 @@ Backend (optional)	Node.js, Express.js
 Database (optional)	MongoDB / LocalStorage
 Tools	VS Code, Git, GitHub
 
-User_Dashboard_Project/
-│
-├── index.html              # Login Page
-├── register.html           # Registration Page
-├── dashboard.html          # Main Dashboard with CRUD
-│
-├── css/
-│   └── style.css           # Styling for all pages
-│
-├── js/
-│   ├── register.js         # Handles registration logic
-│   ├── login.js            # Handles login authentication
-│   └── dashboard.js        # Handles CRUD operations
-│
-├── server.js               # (Optional) Node.js backend
-├── .env                    # (Optional) Environment variables
-└── README.md               # Project documentation
+
 
 For Frontend-only (LocalStorage Version)
 
@@ -51,6 +35,8 @@ Open the project folder
 Run index.html in your browser
 
 Register → Login → Access dashboard
+
+
 
 CRUD Functionalities
 
