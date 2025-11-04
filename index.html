@@ -13,26 +13,25 @@
 
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background: url("ExpenseTracker.png") no-repeat center center fixed;
+        background: url("ExpenseTracker.png") no-repeat center center;
         background-size: cover;
         min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: 1rem;
       }
 
       .container {
-        background: rgb(246, 241, 241);
+        background: rgba(255, 255, 255, 0.92);
         border-radius: 12px;
         padding: 3rem;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
         text-align: center;
         max-width: 500px;
-        max-height: 600px;
-        width: 90%;
-        border-style:solid
-        
-        /* color: azure; */
+        width: 100%;
+        border: 1px solid #ccc;
+        overflow-y: auto;
       }
 
       h1 {
@@ -52,18 +51,19 @@
         gap: 1rem;
         justify-content: center;
         flex-wrap: wrap;
+        margin-bottom: 1.5rem;
       }
 
       .btn {
         padding: 1rem 2rem;
         border: none;
         border-radius: 6px;
-        font-size: 1.8rem;
+        font-size: 1.2rem;
         font-weight: 600;
         cursor: pointer;
         text-decoration: none;
         display: inline-block;
-        transition: transform 0.2s;
+        transition: transform 0.2s, background-color 0.2s;
       }
 
       .btn:hover {
@@ -72,7 +72,7 @@
 
       .btn-primary {
         background: #667eea;
-        color: rgb(18, 17, 17);
+        color: #fff;
       }
 
       .btn-primary:hover {
@@ -80,8 +80,8 @@
       }
 
       .btn-secondary {
-        background: #eec75c;
-        color: rgb(6, 6, 6);
+        background: #f9d65c;
+        color: #000;
       }
 
       .btn-secondary:hover {
@@ -89,14 +89,14 @@
       }
 
       .features {
-        margin-top: 2rem;
+        margin-top: 1rem;
         text-align: left;
       }
 
       .feature-item {
-        padding: 0.75rem 0;
+        padding: 0.6rem 0;
         color: #0c0c0c;
-        font-size: 1.3rem;
+        font-size: 1.1rem;
       }
 
       .feature-item::before {
@@ -104,6 +104,40 @@
         color: #48bb78;
         font-weight: bold;
         margin-right: 0.5rem;
+      }
+
+      /* --- Responsive Design --- */
+      @media (max-width: 600px) {
+        body {
+          padding: 1rem;
+        }
+
+        .container {
+          padding: 1.5rem;
+          max-width: 95%;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        p {
+          font-size: 1rem;
+          margin-bottom: 1.2rem;
+        }
+
+        .btn {
+          font-size: 1rem;
+          padding: 0.8rem 1.2rem;
+        }
+
+        .features {
+          margin-top: 0.5rem;
+        }
+
+        .feature-item {
+          font-size: 0.95rem;
+        }
       }
     </style>
   </head>
