@@ -96,7 +96,7 @@
     
     body { 
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: var(--bg-primary);
+      background-color: #dfe4ef;
       color: var(--text-primary);
       line-height: 1.6;
     }
@@ -583,6 +583,10 @@
         width: 100%;
         justify-content: space-between;
       }
+
+      
+
+
     }
   </style>
 </head>
@@ -590,12 +594,14 @@
   <!-- Navigation -->
   <nav class="navbar">
     <div class="navbar-content">
-      <div class="logo">💰 ExpenseTracker</div>
+      <div class="logo"> ExpenseTracker</div>
       
       <div class="nav-tabs">
         <button class="nav-tab active" onclick="showView('dashboard')">Dashboard</button>
         <button class="nav-tab" onclick="showView('add-expense')">Add Expense</button>
         <button class="nav-tab" onclick="showView('expenses')">All Expenses</button>
+
+       
       </div>
       
       <div class="user-section">
@@ -742,7 +748,10 @@
     </div>
   </div>
 
+
+
   <script src="dashboard-app.js"></script>
 </body>
+
 </html>
 

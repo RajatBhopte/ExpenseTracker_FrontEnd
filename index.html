@@ -1,131 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Expense Tracker - Home</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    .container {
-      background: white;
-      border-radius: 12px;
-      padding: 3rem;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-      text-align: center;
-      max-width: 500px;
-      width: 90%;
-    }
-    
-    h1 {
-      color: #333;
-      margin-bottom: 1rem;
-      font-size: 2.5rem;
-    }
-    
-    p {
-      color: #666;
-      margin-bottom: 2rem;
-      font-size: 1.1rem;
-    }
-    
-    .btn-container {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    
-    .btn {
-      padding: 1rem 2rem;
-      border: none;
-      border-radius: 6px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      transition: transform 0.2s;
-    }
-    
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-    
-    .btn-primary {
-      background: #667eea;
-      color: white;
-    }
-    
-    .btn-primary:hover {
-      background: #5568d3;
-    }
-    
-    .btn-secondary {
-      background: #48bb78;
-      color: white;
-    }
-    
-    .btn-secondary:hover {
-      background: #38a169;
-    }
-    
-    .features {
-      margin-top: 2rem;
-      text-align: left;
-    }
-    
-    .feature-item {
-      padding: 0.75rem 0;
-      color: #555;
-      font-size: 0.95rem;
-    }
-    
-    .feature-item::before {
-      content: "✓ ";
-      color: #48bb78;
-      font-weight: bold;
-      margin-right: 0.5rem;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>💰 Expense Tracker</h1>
-    <p>Track your daily expenses efficiently and securely</p>
-    
-    <div class="btn-container">
-      <a href="login.html" class="btn btn-primary">Login</a>
-      <a href="register.html" class="btn btn-secondary">Register</a>
-    </div>
-    
-    <div class="features">
-      <div class="feature-item">Secure authentication with OAuth 2.0</div>
-      <div class="feature-item">Track all your daily expenses</div>
-      <div class="feature-item">Categorize spending patterns</div>
-      <div class="feature-item">Cloud-based MongoDB storage</div>
-      <div class="feature-item">Full CRUD operations</div>
-    </div>
-  </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Tracker - Home</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-  <script>
-    // Redirect to dashboard if already logged in
-    if (localStorage.getItem('token')) {
-      window.location.href = 'dashboard.html';
-    }
-  </script>
-</body>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: url("ExpenseTracker.png") no-repeat center center fixed;
+        background-size: cover;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container {
+        background: rgb(246, 241, 241);
+        border-radius: 12px;
+        padding: 3rem;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        max-width: 600px;
+        max-height: 700px;
+        width: 90%;
+        border-style:solid
+        
+        /* color: azure; */
+      }
+
+      h1 {
+        color: #030303;
+        margin-bottom: 1rem;
+        font-size: 3rem;
+      }
+
+      p {
+        color: #161515;
+        margin-bottom: 2rem;
+        font-size: 1.5rem;
+      }
+
+      .btn-container {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 6px;
+        font-size: 1.8rem;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        transition: transform 0.2s;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn-primary {
+        background: #667eea;
+        color: rgb(18, 17, 17);
+      }
+
+      .btn-primary:hover {
+        background: #5568d3;
+      }
+
+      .btn-secondary {
+        background: #eec75c;
+        color: rgb(6, 6, 6);
+      }
+
+      .btn-secondary:hover {
+        background: #eec75c;
+      }
+
+      .features {
+        margin-top: 2rem;
+        text-align: left;
+      }
+
+      .feature-item {
+        padding: 0.75rem 0;
+        color: #0c0c0c;
+        font-size: 1.3rem;
+      }
+
+      .feature-item::before {
+        content: "✓ ";
+        color: #48bb78;
+        font-weight: bold;
+        margin-right: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Expense Tracker</h1>
+      <p>Track your daily expenses efficiently and securely</p>
+
+      <div class="btn-container">
+        <a href="login.html" class="btn btn-primary">Login</a>
+        <a href="register.html" class="btn btn-secondary">Register</a>
+      </div>
+
+      <div class="features">
+        <div class="feature-item">Secure authentication with OAuth 2.0</div>
+        <div class="feature-item">Track all your daily expenses</div>
+        <div class="feature-item">Categorize spending patterns</div>
+        <div class="feature-item">Cloud-based MongoDB storage</div>
+        <div class="feature-item">Full CRUD operations</div>
+      </div>
+    </div>
+
+    <script>
+      // Redirect to dashboard if already logged in
+      if (localStorage.getItem("token")) {
+        window.location.href = "dashboard.html";
+      }
+    </script>
+  </body>
 </html>
